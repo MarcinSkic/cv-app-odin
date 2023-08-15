@@ -4,3 +4,10 @@ export interface GeneralInfo {
     email: string;
     phoneNumber: string;
 }
+
+export interface EducationExp {
+    schoolName: string;
+    title: string;
+    startDate: Date;
+    endDate: Date;
+}

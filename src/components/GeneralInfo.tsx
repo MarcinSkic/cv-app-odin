@@ -1,4 +1,3 @@
-import React from "react";
 import { GeneralInfo } from "../types";
 
 export default function GeneralInfo({
