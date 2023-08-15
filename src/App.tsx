@@ -1,37 +1,33 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import InteractiveForm from "./components/InteractiveForm";
+import { GeneralInfo as TGeneralInfo } from "./types";
+import GeneralInfo from "./components/GeneralInfo";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [generalInfo, setGeneralInfo] = useState({
+        submitted: false,
+        fullname: "",
+        email: "",
+        phoneNumber: "",
+    });
+
+    function handleGeneralInfoChange(generalInfo: TGeneralInfo) {
+        setGeneralInfo(generalInfo);
+    }
 
     return (
-        <>
+        <div className="app">
+            <h1>CV generator</h1>
+            <InteractiveForm>
+                <GeneralInfo
+                    data={generalInfo}
+                    handleDataChange={handleGeneralInfoChange}
+                />
+            </InteractiveForm>
             <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
+                <h2>preview</h2>
             </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-        </>
+        </div>
     );
 }
 
