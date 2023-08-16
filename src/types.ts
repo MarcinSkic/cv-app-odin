@@ -11,3 +11,11 @@ export interface EducationExp {
     startDate: Date;
     endDate: Date;
 }
+
+export interface PracticalExp {
+    companyName: string;
+    positionTitle: string;
+    mainResponsibilities: string;
+    startDate: Date;
+    endDate: Date;
+}

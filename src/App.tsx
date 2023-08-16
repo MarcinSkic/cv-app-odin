@@ -1,9 +1,13 @@
 import { useState } from "react";
 import InteractiveForm from "./components/InteractiveForm";
-import { GeneralInfo as TGeneralInfo } from "./types";
-import { EducationExp as TEducationExp } from "./types";
+import {
+    GeneralInfo as TGeneralInfo,
+    EducationExp as TEducationExp,
+    PracticalExp as TPracticalExp,
+} from "./types";
 import GeneralInfo from "./components/GeneralInfo";
 import EducationExp from "./components/EducationExp";
+import PracticalExp from "./components/PracticalExp";
 
 function App() {
     const [generalInfo, setGeneralInfo] = useState({
@@ -20,12 +24,24 @@ function App() {
         endDate: new Date(),
     });
 
+    const [practicalExp, setPracticalExp] = useState({
+        companyName: "",
+        positionTitle: "",
+        mainResponsibilities: "",
+        startDate: new Date(),
+        endDate: new Date(),
+    });
+
     function handleGeneralInfoChange(generalInfo: TGeneralInfo) {
         setGeneralInfo(generalInfo);
     }
 
     function handleEducationExpChange(educationExp: TEducationExp) {
         setEducationExp(educationExp);
+    }
+
+    function handlePracticalExpChange(practicalExp: TPracticalExp) {
+        setPracticalExp(practicalExp);
     }
 
     return (
@@ -39,6 +55,10 @@ function App() {
                 <EducationExp
                     data={educationExp}
                     handleDataChange={handleEducationExpChange}
+                />
+                <PracticalExp
+                    data={practicalExp}
+                    handleDataChange={handlePracticalExpChange}
                 />
             </InteractiveForm>
             <div>
