@@ -4,9 +4,11 @@ import { dateIntoInput } from "../utility";
 export default function PracticalExp({
     data,
     handleDataChange,
+    handleSave,
 }: {
     data: PracticalExp;
     handleDataChange: (data: PracticalExp) => void;
+    handleSave: () => void;
 }) {
     function handleDateChange(startDate: Date, endDate: Date) {
         if (startDate >= endDate) return;
@@ -18,6 +20,7 @@ export default function PracticalExp({
         <form
             onSubmit={(e) => {
                 e.preventDefault();
+                handleSave();
             }}
         >
             <label htmlFor="company-name">Company name: </label>
@@ -75,6 +78,7 @@ export default function PracticalExp({
                     handleDateChange(data.startDate, new Date(e.target.value));
                 }}
             />
+            <button>Save</button>
         </form>
     );
 }

@@ -3,15 +3,17 @@ import { GeneralInfo } from "../types";
 export default function GeneralInfo({
     data,
     handleDataChange,
+    handleSave,
 }: {
     data: GeneralInfo;
     handleDataChange: (data: GeneralInfo) => void;
+    handleSave: () => void;
 }) {
     return (
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                alert("Saving general info");
+                handleSave();
             }}
         >
             <label htmlFor="fullname">Fullname: </label>

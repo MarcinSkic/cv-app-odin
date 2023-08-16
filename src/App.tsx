@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InteractiveForm from "./components/InteractiveForm";
 import {
     GeneralInfo as TGeneralInfo,
@@ -10,8 +10,9 @@ import EducationExp from "./components/EducationExp";
 import PracticalExp from "./components/PracticalExp";
 
 function App() {
+    const DATA_KEY = "CV_DATA";
+
     const [generalInfo, setGeneralInfo] = useState({
-        submitted: false,
         fullname: "",
         email: "",
         phoneNumber: "",
@@ -32,6 +33,26 @@ function App() {
         endDate: new Date(),
     });
 
+    useEffect(() => {
+        const dataJSON = localStorage.getItem(DATA_KEY);
+        if (dataJSON === null) return;
+
+        const { generalInfo, educationExp, practicalExp } =
+            JSON.parse(dataJSON);
+
+        setGeneralInfo(generalInfo);
+        setEducationExp({
+            ...educationExp,
+            startDate: new Date(educationExp.startDate),
+            endDate: new Date(educationExp.endDate),
+        });
+        setPracticalExp({
+            ...practicalExp,
+            startDate: new Date(educationExp.startDate),
+            endDate: new Date(educationExp.endDate),
+        });
+    }, []);
+
     function handleGeneralInfoChange(generalInfo: TGeneralInfo) {
         setGeneralInfo(generalInfo);
     }
@@ -44,6 +65,17 @@ function App() {
         setPracticalExp(practicalExp);
     }
 
+    function handleSave() {
+        localStorage.setItem(
+            DATA_KEY,
+            JSON.stringify({
+                generalInfo,
+                educationExp,
+                practicalExp,
+            })
+        );
+    }
+
     return (
         <div className="app">
             <h1>CV generator</h1>
@@ -51,14 +83,17 @@ function App() {
                 <GeneralInfo
                     data={generalInfo}
                     handleDataChange={handleGeneralInfoChange}
+                    handleSave={handleSave}
                 />
                 <EducationExp
                     data={educationExp}
                     handleDataChange={handleEducationExpChange}
+                    handleSave={handleSave}
                 />
                 <PracticalExp
                     data={practicalExp}
                     handleDataChange={handlePracticalExpChange}
+                    handleSave={handleSave}
                 />
             </InteractiveForm>
             <div>

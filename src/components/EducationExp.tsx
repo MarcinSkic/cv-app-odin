@@ -4,9 +4,11 @@ import { dateIntoInput } from "../utility";
 export default function EducationExp({
     data,
     handleDataChange,
+    handleSave,
 }: {
     data: EducationExp;
     handleDataChange: (data: EducationExp) => void;
+    handleSave: () => void;
 }) {
     function handleDateChange(startDate: Date, endDate: Date) {
         if (startDate >= endDate) return;
@@ -18,6 +20,7 @@ export default function EducationExp({
         <form
             onSubmit={(e) => {
                 e.preventDefault();
+                handleSave();
             }}
         >
             <label htmlFor="school-name">School name: </label>
@@ -56,6 +59,7 @@ export default function EducationExp({
                     handleDateChange(data.startDate, new Date(e.target.value));
                 }}
             />
+            <button>Save</button>
         </form>
     );
 }
