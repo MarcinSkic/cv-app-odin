@@ -85,11 +85,13 @@ function App() {
                     handleDataChange={handleGeneralInfoChange}
                     handleSave={handleSave}
                 />
+                <h2>Education</h2>
                 <EducationExp
                     data={educationExp}
                     handleDataChange={handleEducationExpChange}
                     handleSave={handleSave}
                 />
+                <h2>Experience</h2>
                 <PracticalExp
                     data={practicalExp}
                     handleDataChange={handlePracticalExpChange}
