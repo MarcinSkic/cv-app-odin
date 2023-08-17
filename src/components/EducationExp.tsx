@@ -22,6 +22,7 @@ export default function EducationExp({
     if (editable) {
         return (
             <form
+                className="form-section general-info"
                 onSubmit={(e) => {
                     e.preventDefault();
                     setEditable(false);

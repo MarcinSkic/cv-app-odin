@@ -8,6 +8,7 @@ import {
 import GeneralInfo from "./components/GeneralInfo";
 import EducationExp from "./components/EducationExp";
 import PracticalExp from "./components/PracticalExp";
+import "./App.css";
 
 function App() {
     const DATA_KEY = "CV_DATA";
@@ -79,28 +80,27 @@ function App() {
     return (
         <div className="app">
             <h1>CV generator</h1>
-            <InteractiveForm>
-                <GeneralInfo
-                    data={generalInfo}
-                    handleDataChange={handleGeneralInfoChange}
-                    handleSave={handleSave}
-                />
-                <h2>Education</h2>
-                <EducationExp
-                    data={educationExp}
-                    handleDataChange={handleEducationExpChange}
-                    handleSave={handleSave}
-                />
-                <h2>Experience</h2>
-                <PracticalExp
-                    data={practicalExp}
-                    handleDataChange={handlePracticalExpChange}
-                    handleSave={handleSave}
-                />
-            </InteractiveForm>
-            <div>
-                <h2>preview</h2>
-            </div>
+            <main>
+                <InteractiveForm>
+                    <GeneralInfo
+                        data={generalInfo}
+                        handleDataChange={handleGeneralInfoChange}
+                        handleSave={handleSave}
+                    />
+                    <h2>Education</h2>
+                    <EducationExp
+                        data={educationExp}
+                        handleDataChange={handleEducationExpChange}
+                        handleSave={handleSave}
+                    />
+                    <h2>Experience</h2>
+                    <PracticalExp
+                        data={practicalExp}
+                        handleDataChange={handlePracticalExpChange}
+                        handleSave={handleSave}
+                    />
+                </InteractiveForm>
+            </main>
         </div>
     );
 }

@@ -15,6 +15,7 @@ export default function GeneralInfo({
     if (editable) {
         return (
             <form
+                className="form-section general-info"
                 onSubmit={(e) => {
                     e.preventDefault();
                     setEditable(false);
